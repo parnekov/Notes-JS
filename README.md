@@ -8,7 +8,7 @@ This app for notes
 <table align="left" width="100%">
   <tbody>
     <tr>
-      <td colspan="1"> <img src="./screenshot.jpg" alt="screenshot"/> </td>
+      <td colspan="1"> <img src="screnshot.jpg" alt="screenshot"/> </td>
   </tbody>
 </table>
 
