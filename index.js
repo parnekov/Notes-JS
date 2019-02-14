@@ -1,5 +1,5 @@
 // variable declarations
-const input = document.getElementById("input");
+const input = document.getElementById("mainInput");
 const buttonAdd = document.getElementById("addButton");
 const container = document.getElementById("generalUl");
 const buttonDelDone = document.getElementById("deleteDone");
@@ -17,10 +17,8 @@ function handleEnterButton(){
         addRowToList();
         renderList();
       }
-    
     });
 }
-
 
 // add one row
 function handleAddRow(){
@@ -35,13 +33,13 @@ function handleDeleteRow(){
     const deleteBtns = document.getElementsByClassName("delete");
     const array = getArrayFromHTML(); 
     for (let index = 0; index < deleteBtns.length; index++) {
-    deleteBtns[index].onclick = ()=>{
-        if(deleteBtns[index].id == array[index].id){
-            array[index] = "";
-            uploadListToStorage(array);
-            renderList();
-        }            
-    };
+        deleteBtns[index].onclick = ()=>{
+            if(deleteBtns[index].id == array[index].id){
+                array[index] = "";
+                uploadListToStorage(array);
+                renderList();
+            }            
+        };
     }
 }
 
@@ -117,7 +115,6 @@ function pressCheckBox(){
     console.log("press checkbox");
 }
 
-
 // get array and upload to storage
 function uploadListToStorage(toDoList){
     localStorage.setItem('todo', JSON.stringify(toDoList));
@@ -179,20 +176,17 @@ function renderList(){
     let check = "";
     // create element li and push in ul
 
-    /*ітеруємо масив та сетаємо у вікно*/
+    // Iterate array and set in window
     if(dataToRender !== undefined){
-
         for (let index = 0; index < dataToRender.length; index++) {
             dataToRender[index].isChecked === true ? check = "checked" : check = "";
-            // console.log("Hello Wrold - " + dataToRender[index].isChecked);
             let toDoNote = document.createElement('li');
             if(dataToRender[index].text !== undefined){
                 toDoNote.innerHTML = `<input class="checkBoxes" id="checkId-${index}" type="checkbox" 
-                ${check}><span>${dataToRender[index].text}</span><button class="delete" id="${index}">Delete</button>`;
-                // console.log(toDoNote.innerHTML);
+                ${check}><span class="textNote">${dataToRender[index].text}</span><button class="buttonDelete" id="${index}">Delete</button>`;
                 listOfLi.appendChild(toDoNote);
             }
-            }
+        }
     }
     handleAddRow();
     handleDeleteRow();
